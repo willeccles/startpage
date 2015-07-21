@@ -236,8 +236,12 @@ function parseCom(com) {
 	else if (new RegExp("^youtube$").test(com) || new RegExp("^yt$").test(com)) {
 		nav("http://www.youtube.com");
 	}
-	else if (new RegExp("^twitch$").test(com) || new RegExp("^ttv$").test(com)) {
+	else if (new RegExp("^(twitch|ttv)$").test(com)) {
 		nav("http://www.twitch.tv/following");
+	}
+	else if (new RegExp("^(twitch|ttv) [^ ]+$")) {
+		var parts = com.split(" ");
+		nav("http://www.twitch.tv/" + parts.pop());
 	}
 	else if (new RegExp("^spotify$").test(com) || new RegExp("^sptfy$").test(com)) {
 		nav("https://play.spotify.com");

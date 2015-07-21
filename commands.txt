@@ -79,6 +79,8 @@ youtube, yt
 	youtube.com
 twitch, ttv
 	twitch ("following" page)
+twitch|ttv [username]
+	twitch.tv/[username]
 spotify, sptfy
 	spotify web player (cuz adblock :D)
 soundcloud, sc

@@ -12,7 +12,7 @@ var handy = new RegExp("^(google|gmail|dropbox)$");
 function search() {
 	console.log("Googling \"" + box.value + "\"");
 	console.log("Encoded query: \n" + encodeURIComponent(box.value));
-	document.location.href = "https://www.google.com/search?q=" + encodeURIComponent(box.value);
+	document.location.href = "https://www.bing.com/search?q=" + encodeURIComponent(box.value);
 }
 
 // if not search, nav to somewhere
@@ -239,7 +239,7 @@ function parseCom(com) {
 	else if (new RegExp("^(twitch|ttv)$").test(com)) {
 		nav("http://www.twitch.tv/following");
 	}
-	else if (new RegExp("^(twitch|ttv) [^ ]+$")) {
+	else if (new RegExp("^(twitch|ttv) [^ ]+$").test(com)) {
 		var parts = com.split(" ");
 		nav("http://www.twitch.tv/" + parts.pop());
 	}

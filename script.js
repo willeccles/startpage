@@ -236,6 +236,9 @@ function parseCom(com) {
 	else if (new RegExp("^youtube$").test(com) || new RegExp("^yt$").test(com)) {
 		nav("http://www.youtube.com");
 	}
+	else if (new RegExp("^yt m$").test(com) || new RegExp("^(yt )?mrzic$").test(com)) {
+		nav("https://www.youtube.com/playlist?list=PLFO5u7DxWplMm2RfQ8FUMZs5ydmChx2V8");
+	}
 	else if (new RegExp("^(twitch|ttv)$").test(com)) {
 		nav("http://www.twitch.tv/following");
 	}

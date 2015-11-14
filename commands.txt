@@ -77,6 +77,8 @@ ps
 ## MEDIA ##
 youtube, yt
 	youtube.com
+yt m | [yt] mrzic
+	mrzic playlist on youtube
 twitch, ttv
 	twitch ("following" page)
 twitch|ttv [username]

@@ -6,7 +6,7 @@
 	Goes straight to that url, as long as it is valid.
 [google search query]
 	Googles the query
-help
+help | halp
 	Show this list
 
 ## FUN ##

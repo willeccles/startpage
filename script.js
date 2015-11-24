@@ -44,7 +44,7 @@ function aTitle(e) {
 // parse the user's command
 function parseCom(com) {
 	// handle help command
-	if (new RegExp("^help$").test(com) || new RegExp("^commands$").test(com)) {
+	if (new RegExp("^h[ea]lp$").test(com) || new RegExp("^commands$").test(com)) {
 		document.location.href = "commands.txt";
 	}
 	// handle imgur command

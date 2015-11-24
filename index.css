@@ -8,7 +8,6 @@ html, body {
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
-    padding-top: 10px; /* effectively 20px, since its 10 for the html and 10 for the body */
     background-color: black;
     background-image: url("bgimg.jpg");
     background-repeat: no-repeat;
@@ -24,17 +23,14 @@ html, body {
     color: antiquewhite;
     font-weight: 400;
     font-size: 100%;
-    min-width: Calc(100% - 80px);
-    width: Calc(100% - 80px);
     background-color: rgba(0,0,0,.25);
     box-shadow: 0px 0px 5px black;
-    margin-left: 40px;
-    margin-right: 40px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding: 2px 5px 2px 5px;
     display: block;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    top: 20px;
 }
 
 #search-container::before {
@@ -49,16 +45,14 @@ html, body {
     color: inherit;
     font-size: inherit;
     font-weight: inherit;
-    width: Calc(100% - 394px);
-    min-width: Calc(100% - 394px);
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: none;
     background-color: transparent;
-    /* was used to center before margin-left: auto;
-    margin-right: auto;*/
     text-align: left;
+    display: inline-block;
+    width: Calc(100% - 330px);
 }
 
 #time {
@@ -72,6 +66,20 @@ html, body {
 
 .searchbox:focus {
     outline: none;
+}
+
+.tile {
+    font-family: "Source Code Pro", monospace;
+    background-color: rgba(0,0,0,.25);
+    box-shadow: 0px 0px 5px black;
+    color: antiquewhite;
+    padding: 2px 5px 2px 5px;
+    width: 33%;
+    display: block;
+    position: absolute;
+    left: 40px;
+    top: 65px;
+    bottom: 20px;
 }
 
 ::-webkit-input-placeholder {
@@ -88,37 +96,6 @@ html, body {
 
 :-ms-input-placeholder {
     color: white;
-}
-
-table {
-    display: none;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: "Source Code Pro", monospace;
-    background-color: transparent;
-}
-
-tr {
-    background-color: rgba(0,0,0,.25);
-}
-
-th, td {
-    padding-right: 30px;
-    padding-left: 30px;
-}
-
-th {
-    font-weight: 600;
-    color: white;
-    text-align: left;
-}
-
-td {
-    font-weight: 400;
-    color: #00FF00;
 }
 
 a {

@@ -256,6 +256,9 @@ function parseCom(com) {
 	else if (handy.test(com)) {
 		nav("http://www."+com+".com/");
 	}
+	else if (new RegExp("^about:[A-Za-z0-9_-]+$").test(com)) {
+		document.location.href = com;
+	}
 	// These are some commands that are just for fun, and probably won't be added to the list
 	else if (new RegExp("^[.]alert << .*$").test(com)) {
 		var message = com.replace(new RegExp("^[.]alert << "), "");

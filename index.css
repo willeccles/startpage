@@ -52,7 +52,7 @@ html, body {
     background-color: transparent;
     text-align: left;
     display: inline-block;
-    width: Calc(100% - 330px);
+    width: Calc(100% - 335px);
 }
 
 #time {

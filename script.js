@@ -252,6 +252,10 @@ function parseCom(com) {
 	else if (new RegExp("^soundcloud$").test(com) || new RegExp("^sc$").test(com)) {
 		nav("https://soundcloud.com/stream");
 	}
+	// github
+	else if (new RegExp("^git(hub)?$").test(com)) {
+		nav("https://github.com");
+	}
 	// Here are some really handy ones I'll probably have to use
 	else if (handy.test(com)) {
 		nav("http://www."+com+".com/");

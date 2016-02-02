@@ -10,7 +10,7 @@ help | halp
 	Show this list
 
 ## FUN ##
-.alert << [text]
+cout << [text]
 	alert([text]);
 
 ## JORDAN ##

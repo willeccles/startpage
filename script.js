@@ -269,8 +269,8 @@ function parseCom(com) {
 		document.location.href = com;
 	}
 	// These are some commands that are just for fun, and probably won't be added to the list
-	else if (new RegExp("^[.]alert << .*$").test(com)) {
-		var message = com.replace(new RegExp("^[.]alert << "), "");
+	else if (new RegExp("^cout << .*$").test(com)) {
+		var message = com.replace(new RegExp("^cout << "), "");
 		alert(message);
 	}
 	// if it doesn't match any of the commands...

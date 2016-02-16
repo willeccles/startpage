@@ -274,8 +274,8 @@ function parseCom(com) {
 		alert(message);
 	}
 	// This one is for the bing thingy
-	else if (/^bing points$/.test(com)) {
-		bingPoints();
+	else if (/^bing points farm$/.test(com)) {
+		nav("www.pogocheats.net/bing-rewards-bot");
 	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL
@@ -286,9 +286,4 @@ function parseCom(com) {
 	else {
 		search();
 	}
-}
-
-function bingPoints() {
-	
-	document.body.innerHTML += "<iframe id=\"bing\" class=\"bing\" src=\"https://www.bing.com/search?q=what+is+the+speed+of+sound&pc=MOZI&form=MOZLBR\"></iframe>";
 }

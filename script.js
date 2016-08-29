@@ -287,6 +287,9 @@ function parseCom(com) {
 	else if (/^(qu|quinnipiac) mail$/i.test(com)) {
 		nav("mail.quinnipiac.edu");
 	}
+	else if (/^(blackboard|bb)$/i.test(com)) {
+		nav("quinnipiac.blackboard.com");
+	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL
 	else if (urlPattern.test(com)) {

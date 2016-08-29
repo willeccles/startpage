@@ -87,3 +87,9 @@ spotify, sptfy
 	spotify web player (cuz adblock :D)
 soundcloud, sc
 	soundcloud
+
+## QUINNIPIAC ##
+qu, quinnipiac [mail]
+	Quinnipiac site/mail
+myq
+	Quinnipiac MyQ

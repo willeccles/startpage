@@ -277,6 +277,16 @@ function parseCom(com) {
 	else if (/^bing points farm$/.test(com)) {
 		nav("www.pogocheats.net/bing-rewards-bot");
 	}
+	// quinnipiac stuff
+	else if (/^qu|quinnipiac$/i.test(com)) {
+		nav("www.qu.edu");
+	}
+	else if (/^myq$/i.test(com)) {
+		nav("myq.quinnipiac.edu");
+	}
+	else if (/^(qu|quinnipiac) mail$/i.test(com)) {
+		nav("mail.quinnipiac.edu");
+	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL
 	else if (urlPattern.test(com)) {

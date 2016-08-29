@@ -278,7 +278,7 @@ function parseCom(com) {
 		nav("www.pogocheats.net/bing-rewards-bot");
 	}
 	// quinnipiac stuff
-	else if (/^qu|quinnipiac$/i.test(com)) {
+	else if (/^(qu|quinnipiac)$/i.test(com)) {
 		nav("www.qu.edu");
 	}
 	else if (/^myq$/i.test(com)) {

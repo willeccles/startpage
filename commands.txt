@@ -93,3 +93,5 @@ qu, quinnipiac [mail]
 	Quinnipiac site/mail
 myq
 	Quinnipiac MyQ
+bb, blackboard
+	Quinnipiac Blackboard

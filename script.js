@@ -290,6 +290,9 @@ function parseCom(com) {
 	else if (/^(blackboard|bb)$/i.test(com)) {
 		nav("quinnipiac.blackboard.com");
 	}
+	else if (/^mimir$/i.test(com)) {
+		nav("https://app.mimirplatform.io");
+	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL
 	else if (urlPattern.test(com)) {

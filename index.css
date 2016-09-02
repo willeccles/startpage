@@ -34,7 +34,7 @@ html, body {
 }
 
 #search-container::before {
-    content: "internet:~ will$";
+    content: "will@internet:~$";
     color: firebrick;
     margin: 0;
     padding: 0;
@@ -61,7 +61,7 @@ html, body {
     padding: 0;
     text-align: right;
     width: 160px;
-    float: right;
+	float: right;
 }
 
 .searchbox:focus {

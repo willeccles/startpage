@@ -1,0 +1,133 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:200,300,400,500,600,700,900);
+
+html, body {
+    height: 100%;
+    width: 100% !important;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    background-color: black;
+    background-image: url("bgimg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-clip: border-box;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+#search-container {
+    font-family: "Source Code Pro", monospace;
+    color: antiquewhite;
+    font-weight: 400;
+    font-size: 100%;
+    background-color: rgba(0,0,0,.25);
+    box-shadow: 0px 0px 5px black;
+    padding: 2px 5px 2px 5px;
+    display: block;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    top: 20px;
+}
+
+#search-container::before {
+    content: "will@internet:~$";
+    color: firebrick;
+    margin: 0;
+    padding: 0;
+}
+
+.searchbox {
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background-color: transparent;
+    text-align: left;
+    display: inline-block;
+    width: Calc(100% - 335px);
+}
+
+#time {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    width: 160px;
+	float: right;
+}
+
+.searchbox:focus {
+    outline: none;
+}
+
+.tile {
+    font-family: "Source Code Pro", monospace;
+    background-color: rgba(0,0,0,.25);
+    box-shadow: 0px 0px 5px black;
+    color: antiquewhite;
+    padding: 2px 5px 2px 5px;
+    width: 33%;
+    display: block;
+    position: absolute;
+    left: 40px;
+    top: 65px;
+    bottom: 20px;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+}
+
+:-moz-placeholder { /* firefox 18- */
+    color: white;
+}
+
+::-moz-placeholder { /* firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder {
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer {
+    color: rgba(0,0,0,.25);
+    font-family: "Source Code Pro", monospace;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    bottom: 0;
+}
+
+.bing {
+	display: block;
+	position: absolute;
+	z-index: 1000;
+	top: 100px;
+	bottom: 100px;
+	right: 100px;
+	left: 100px;
+}

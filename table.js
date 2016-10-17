@@ -16,7 +16,7 @@ function loadLinks() {
 		// key = "column number"
 		// siteLinks[key] = {'page':'address'}
 		for (var link in siteLinks[key]) {
-		
+			
 		}
 	}
 }

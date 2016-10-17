@@ -291,7 +291,7 @@ function parseCom(com) {
 		nav("quinnipiac.blackboard.com");
 	}
 	else if (/^mimir$/i.test(com)) {
-		nav("https://app.mimirplatform.io");
+		nav("https://class.mimir.io");
 	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL

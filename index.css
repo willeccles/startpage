@@ -1,6 +1,12 @@
 body, html {
 	margin: 0;
-	background-color: #294754;
+	background-color: #284357;
+	background-image: url("bg.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-clip: border-box;
+	background-position: center;
+	background-size: cover;
 }
 
 html {
@@ -8,4 +14,40 @@ html {
 }
 
 body {
+	overflow: hidden;
+}
+
+.searchBox {
+	width: 100%;
+	position: absolute;
+	display: block;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	background-color: transparent;
+	-webkit-backdrop-filter: saturate(1.8) blur(15px);
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .75);
+	font-family: 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: rgba(0, 0, 0, .75);
+	font-size: 400%;
+	font-weight: inherit;
+	border: none;
+	text-align: center;
+	padding: 5px;
+}
+
+::selection {
+	background-color: transparent;
+	color: rgba(255, 255, 255, .75);
+}
+
+::-moz-selection {
+	background-color: transparent;
+	color: rgba(255, 255, 255, .75);
+}
+
+.searchBox:focus {
+	outline: none;
 }

@@ -8,6 +8,8 @@ var hashtag = "(#|＃)?([a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0100-\u
 // add on here with more handy things
 var handy = /^(google|gmail|dropbox)$/i;
 
+var instaregex = /^i(nsta(gram)?|g)/i;
+
 // search for text in text box
 function search() {
 	console.log("Googling \"" + box.value + "\"");
@@ -182,13 +184,13 @@ function parseCom(com) {
 		}
 	}
 	// handle ig command
-	else if (com.startsWith("ig")==true) {
+	else if (instaregex.test(com)) {
 		// just plain old ig
-		if (/^ig$/i.test(com)) {
+		if (/^i(nsta(gram)?|g)$/i.test(com)) {
 			nav("https://www.instagram.com/");
 		}
 		// ig [@]username command
-		else if (/^ig @?[A-Za-z0-9_.]{1,30}/i.test(com)) {
+		else if (/^i(nsta(gram)?|g) @?[A-Za-z0-9_.]{1,30}/i.test(com)) {
 			var iargs = com.split(" ");
 			nav("https://www.instagram.com/" + iargs.pop());
 		}

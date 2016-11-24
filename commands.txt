@@ -1,0 +1,97 @@
+# the following is a list of all of the commands available in my startpage terminal
+# click the back button to go back to the startpage
+
+## GENERAL ##
+[URL]
+	Goes straight to that url, as long as it is valid.
+[google search query]
+	Googles the query
+help | halp
+	Show this list
+
+## FUN ##
+cout << [text]
+	alert([text]);
+
+## JORDAN ##
+# these are commands dedicated to going to Jordan's social media, as I have to do it often
+jrd [-t][-r]
+	-t  Goes to @aaeggs
+	-r  Goes to /u/superspacezero
+jrd
+	Defaults to /u/superspacezero
+
+## REDDIT ##
+reddit
+	Go to reddit
+reddit [-r][-u] [arg]
+	-r  Go to subreddit [arg]
+	-u  Go to user [arg]
+reddit [df][wg][up][sp]
+	df  /r/Deliciousfails
+	wg  /r/Weekendgunnit
+	up  /r/Unixporn
+	sp  /r/Startpages
+imgur
+	Opens imgur.com
+
+## TWITTER ##
+twt
+	Go to twitter
+twt [username]
+	Go to specific twitter user @[username] ('@' is optional)
+twt -s [text]
+	Search twitter for tweets containing [text]
+twt -su [username] [text]
+	Search for tweets from @[username] containing [text] ('@' is optional)
+twt -sh [tag]
+	Search tweets containing #[tag] ('#' is optional)
+twt -sh [username] [tag]
+	Search tweets from @[username] containing #[tag] ('@' and '#' are optional)
+twd
+	Go to tweetdeck (in browser, obviously)
+
+## INSTAGRAM ##
+ig
+	Go to instagram.com
+ig [username]
+	Go to @[username] on instagram.com ('@' is optional)
+	
+## BITCOIN ##
+btc [cb][ba][io][ct]
+	cb  Coinbase
+	ba  Bitcoin Aliens faucet
+	io  Bitkoin.io
+	ct  ChangeTip
+	
+## MISC ##
+inbox
+	inbox.google.com
+drive
+	drive.google.com
+speedtest, spd
+	speedtest.net
+ps
+	powerschool
+	
+## MEDIA ##
+youtube, yt
+	youtube.com
+yt m | [yt] mrzic
+	mrzic playlist on youtube
+twitch, ttv
+	twitch ("following" page)
+twitch|ttv [username]
+	twitch.tv/[username]
+spotify, sptfy
+	spotify web player (cuz adblock :D)
+soundcloud, sc
+	soundcloud
+
+## QUINNIPIAC ##
+qu, quinnipiac [mail]
+	Quinnipiac site/mail
+myq
+	Quinnipiac MyQ
+bb, blackboard
+	Quinnipiac Blackboard

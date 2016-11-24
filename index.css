@@ -26,11 +26,12 @@ body {
 	-webkit-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	background-color: transparent;
+	background-color: rgba(255, 255, 255, 0.1);
 	-webkit-backdrop-filter: saturate(1.8) blur(15px);
+	backdrop-filter: saturate(1.8) blur(15px);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .75);
 	font-family: 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	color: rgba(0, 0, 0, .75);
+	color: rgba(0, 0, 0, .65);
 	font-size: 400%;
 	font-weight: inherit;
 	border: none;
@@ -38,14 +39,26 @@ body {
 	padding: 5px;
 }
 
+.noblur {
+	background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
 ::selection {
 	background-color: transparent;
-	color: rgba(255, 255, 255, .75);
+	color: rgba(255, 255, 255, .65);
+}
+
+.noblur::selection {
+	color: rgba(0, 0, 0, 1);
 }
 
 ::-moz-selection {
 	background-color: transparent;
-	color: rgba(255, 255, 255, .75);
+	color: rgba(255, 255, 255, .65);
+}
+
+.noblur::-moz-selection {
+	color: rgba(0, 0, 0, 1);
 }
 
 .searchBox:focus {

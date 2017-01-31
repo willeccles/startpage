@@ -28,9 +28,12 @@ body {
 	-webkit-transform: translate(-50%, -50%);
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
+	/* these are for safari only, moved to down below
 	background-color: rgba(255, 255, 255, 0.1);
 	-webkit-backdrop-filter: saturate(1.8) blur(15px);
 	backdrop-filter: saturate(1.8) blur(15px);
+	*/
+	background-color: rgba(255, 255, 255, 0.75);
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .75);
 	font-family: 'Fira Code', 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: rgba(0, 0, 0, .65);
@@ -41,8 +44,23 @@ body {
 	padding: 5px;
 }
 
-.noblur {
-	background-color: rgba(255, 255, 255, 0.75) !important;
+/* WORKAROUND FOR OTHER BROWSERS:
+ * Look into using the same background, masked to be only behind the box,
+ * located in the same place as the .body background, and then use
+ * filter/-webkit-filter/etc. to apply a blur/saturation.
+ * Modify BG color of box to be the same as the one in the safari box below.
+ * */
+
+/* target safari for webkit backdrop blur */
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+	@media {
+		/*anything in here is safari only*/
+		.searchBox {
+			-webkit-backdrop-filter: saturate(1.8) blur(15px);
+			backdrop-filter: saturate(1.8) blur(15px);
+			background-color: rgba(255, 255, 255, 0.1) !important;
+		}
+	}
 }
 
 ::selection {

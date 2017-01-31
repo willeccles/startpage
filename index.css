@@ -33,7 +33,7 @@ body {
 	-webkit-backdrop-filter: saturate(1.8) blur(15px);
 	backdrop-filter: saturate(1.8) blur(15px);
 	*/
-	background-color: rgba(255, 255, 255, 0.75);
+	background-color: rgba(255, 255, 255, 0.1); /* alpha used to be .75, for reference */
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .75);
 	font-family: 'Fira Code', 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	color: rgba(0, 0, 0, .65);
@@ -42,6 +42,29 @@ body {
 	border: none;
 	text-align: center;
 	padding: 5px;
+}
+
+/* working in FF, but not Chrome for some reason. Background offset by 50% to the left in Chrome. */
+.searchBoxBG {
+	background-image: url("bg.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-clip: border-box;
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	height: 87px;
+	text-align: center;
+	position: absolute;
+	display: block;
+	padding: 0;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	filter: saturate(1.8);
+	-webkit-filter: saturate(1.8);
 }
 
 /* WORKAROUND FOR OTHER BROWSERS:
@@ -59,6 +82,9 @@ body {
 			-webkit-backdrop-filter: saturate(1.8) blur(15px);
 			backdrop-filter: saturate(1.8) blur(15px);
 			background-color: rgba(255, 255, 255, 0.1) !important;
+		}
+		.searchBoxBG {
+			display: none !important;
 		}
 	}
 }

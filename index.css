@@ -6,7 +6,6 @@ body, html {
 	background-attachment: fixed;
 	background-clip: border-box;
 	background-position: center;
-	background-size: Calc(100% + 40px) auto;
 	font-feature-settings: "calt" 1 !important; /* enables ligatures in Edge */
 	text-rendering: optimizeLegibility; /* force ligatures in WebKit, Blink, and Gecko */
 	-webkit-background-size: cover;

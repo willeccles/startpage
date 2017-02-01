@@ -9,6 +9,10 @@ body, html {
 	background-size: Calc(100% + 40px) auto;
 	font-feature-settings: "calt" 1 !important; /* enables ligatures in Edge */
 	text-rendering: optimizeLegibility; /* force ligatures in WebKit, Blink, and Gecko */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 html {

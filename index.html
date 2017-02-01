@@ -1,57 +1,16 @@
 <!DOCTYPE html>
 <html>
-    <!-- dis be muh custom home page doe -->
-    <head>
-        <title>Home</title>
-        <link rel="stylesheet" href="index.css"></link>
-        
-    </head>
-    <body>
-            
-        <span id="search-container">
-            <!-- "internet:~ will$" added here as ::before -->
-            <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" id="search box" type="text" class="searchbox" placeholder="" onkeypress="searchKeyPress(event)"></input>
-            <div id="time">
-                <script>
-                    var interval;
-                    
-                    function updateTime() {
-                        interval = setInterval(writeTime, 1000); // every second, do 1000*60 to do every minute
-                    }
-                    
-                    function writeTime() {
-                        var now = new Date();
-                        
-                        function hour() {
-                            if (now.getHours().toString().length < 2) {
-                                return "0" + now.getHours();
-                            } 
-                            else {
-                                return now.getHours();
-                            }
-                        }
-                        function mins() {
-                            if (now.getMinutes().toString().length < 2) {
-                                return "0" + now.getMinutes();
-                            }
-                            else {
-                                return now.getMinutes();
-                            }
-                        }
-                        
-                        document.getElementById("time").innerHTML = hour() + ":" + mins() + "&nbsp" + (now.getMonth()+1).toString() + "/" +  now.getDate() + "/" + now.getFullYear();
-                    }
-                    
-                    writeTime();
-                    updateTime();
-                </script>
-            </div>
-        </span>
-        
-        <div class="footer">
-            type "help" for commands
-        </div>
-        
-        <script src="script.js" type="text/javascript"></script>
-    </body>
+	<head>
+		<title>Home</title>
+		<link rel="stylesheet" href="fira_code.css"/>
+		<link rel="stylesheet" href="index.css"/>
+	</head>
+	<body>
+		<div id="background" class="searchBoxBG">
+			<img id="bgimg" class="bgimg" src="bg.jpg"/>
+		</div>
+		<input type="text" id="search box" class="searchBox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="" onkeypress="searchKeyPress()"></input>
+
+		<script src="script.js" type="text/javascript"></script>
+	</body>
 </html>

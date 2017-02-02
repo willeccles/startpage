@@ -127,6 +127,23 @@ function parseCom(com) {
 			search();
 		}
 	}
+	// voat
+	else if (com.startsWith("voat")==true) {
+		if (/^voat -v .*$/i.test(com)) {
+			var vargs = com.split(" ");
+			nav("https://voat.co/v/" + vargs.pop());
+		}
+		else if (/^voat -u .*$/i.test(com)) {
+			var uargs = com.split(" ");
+			nav("https://voat.co/u/" + uargs.pop());
+		}
+		else if (/^voat$/i.test(com)) {
+			nav("https://voat.co");
+		}
+		else {
+			search();
+		}
+	}
 	// handle twt command
 	else if (com.startsWith("twt")==true) {
 		// if matches the "twt" command

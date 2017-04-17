@@ -95,23 +95,21 @@ body {
  *      * */
 
 /* target safari for webkit backdrop blur */
-@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
-	@media {
-		/*anything in here is safari only*/
-		.searchBox {
-			-webkit-backdrop-filter: saturate(1.8) blur(15px);
-			backdrop-filter: saturate(1.8) blur(15px);
-			background-color: rgba(255, 255, 255, 0.1) !important;
-		}
-		.searchBoxBG {
-			display: none !important;
-		}
-		html, body {
-			background-size: cover !important;
-			background-position: center !important;
-		}
+@media not all and (min-resolution:.001dpcm) { @media {
+	/*anything in here is safari only*/
+	.searchBox {
+		-webkit-backdrop-filter: saturate(1.8) blur(15px);
+		backdrop-filter: saturate(1.8) blur(15px);
+		background-color: rgba(255, 255, 255, 0.1) !important;
 	}
-}
+	.searchBoxBG {
+		display: none !important;
+	}
+	html, body {
+		background-size: cover !important;
+		background-position: center !important;
+	}
+}}
 
 ::selection {
 	background-color: transparent;

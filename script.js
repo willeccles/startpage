@@ -99,6 +99,9 @@ function parseCom(com) {
 				case "sp":
 					nav("https://www.reddit.com/r/startpages");
 					break;
+				case "mk":
+					nav("https://www.reddit.com/r/mechanicalkeyboards");
+					break;
 				default:
 					nav("https://www.reddit.com/");
 					break;
@@ -110,7 +113,7 @@ function parseCom(com) {
 			nav("https://www.reddit.com/r/" + sargs.pop());
 		}
 		// if the user command is matched
-		else if (/^reddit -u .*$/i.test(com)) {
+		else if (/^reddit -u [\w-]{3,20}$/i.test(com)) {
 			var uargs = com.split(" ");
 			nav("https://www.reddit.com/u/" + uargs.pop());
 		}

@@ -105,7 +105,7 @@ function parseCom(com) {
 			}
 		}
 		// if the subreddit command is matched
-		else if (/^reddit -r .*$/i.test(com)) {
+		else if (/^reddit -r [A-Za-z0-9][A-Za-z0-9_]{2,20}$/i.test(com)) {
 			var sargs = com.split(" ");
 			nav("https://www.reddit.com/r/" + sargs.pop());
 		}
@@ -263,10 +263,10 @@ function parseCom(com) {
 	else if (/^yt m$/i.test(com) || /^(yt )?mrzic$/i.test(com)) {
 		nav("https://www.youtube.com/playlist?list=PLFO5u7DxWplMm2RfQ8FUMZs5ydmChx2V8");
 	}
-	else if (/^(twitch|ttv)$/i.test(com)) {
+	else if (/^ttv$/i.test(com)) {
 		nav("http://www.twitch.tv/following");
 	}
-	else if (/^(twitch|ttv) [^ ]+$/i.test(com)) {
+	else if (/^ttv [a-zA-Z0-9_]{4,25}$/i.test(com)) {
 		var parts = com.split(" ");
 		nav("http://www.twitch.tv/" + parts.pop());
 	}

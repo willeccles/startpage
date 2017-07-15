@@ -99,18 +99,21 @@ function parseCom(com) {
 				case "sp":
 					nav("https://www.reddit.com/r/startpages");
 					break;
+				case "mk":
+					nav("https://www.reddit.com/r/mechanicalkeyboards");
+					break;
 				default:
 					nav("https://www.reddit.com/");
 					break;
 			}
 		}
 		// if the subreddit command is matched
-		else if (/^reddit -r .*$/i.test(com)) {
+		else if (/^reddit -r [A-Za-z0-9][A-Za-z0-9_]{2,20}$/i.test(com)) {
 			var sargs = com.split(" ");
 			nav("https://www.reddit.com/r/" + sargs.pop());
 		}
 		// if the user command is matched
-		else if (/^reddit -u .*$/i.test(com)) {
+		else if (/^reddit -u [\w-]{3,20}$/i.test(com)) {
 			var uargs = com.split(" ");
 			nav("https://www.reddit.com/u/" + uargs.pop());
 		}
@@ -123,6 +126,23 @@ function parseCom(com) {
 			nav(com);
 		}
 		// if all else fails, google it
+		else {
+			search();
+		}
+	}
+	// voat
+	else if (com.startsWith("voat")==true) {
+		if (/^voat -v .*$/i.test(com)) {
+			var vargs = com.split(" ");
+			nav("https://voat.co/v/" + vargs.pop());
+		}
+		else if (/^voat -u .*$/i.test(com)) {
+			var uargs = com.split(" ");
+			nav("https://voat.co/u/" + uargs.pop());
+		}
+		else if (/^voat$/i.test(com)) {
+			nav("https://voat.co");
+		}
 		else {
 			search();
 		}
@@ -246,10 +266,10 @@ function parseCom(com) {
 	else if (/^yt m$/i.test(com) || /^(yt )?mrzic$/i.test(com)) {
 		nav("https://www.youtube.com/playlist?list=PLFO5u7DxWplMm2RfQ8FUMZs5ydmChx2V8");
 	}
-	else if (/^(twitch|ttv)$/i.test(com)) {
+	else if (/^ttv$/i.test(com)) {
 		nav("http://www.twitch.tv/following");
 	}
-	else if (/^(twitch|ttv) [^ ]+$/i.test(com)) {
+	else if (/^ttv [a-zA-Z0-9_]{4,25}$/i.test(com)) {
 		var parts = com.split(" ");
 		nav("http://www.twitch.tv/" + parts.pop());
 	}
@@ -269,6 +289,9 @@ function parseCom(com) {
 	}
 	else if (/^about:[A-Za-z0-9_-]+$/i.test(com)) {
 		document.location.href = com;
+	}
+	else if (/^(ttv\s)?(donny|mustard|bm)/.test(com)) {
+		nav("https://twitch.tv/barbaricmustard");
 	}
 	// These are some commands that are just for fun, and probably won't be added to the list
 	else if (/^cout << .*$/i.test(com)) {

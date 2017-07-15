@@ -5,10 +5,13 @@ body, html {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-clip: border-box;
-	background-position: -20px center;
-	background-size: Calc(100% + 40px) auto;
+	background-position: center;
 	font-feature-settings: "calt" 1 !important; /* enables ligatures in Edge */
 	text-rendering: optimizeLegibility; /* force ligatures in WebKit, Blink, and Gecko */
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 html {
@@ -29,10 +32,10 @@ body {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	/* these are for safari only, moved to down below
-	 * 	background-color: rgba(255, 255, 255, 0.1);
-	 * 		-webkit-backdrop-filter: saturate(1.8) blur(15px);
-	 * 			backdrop-filter: saturate(1.8) blur(15px);
-	 * 				*/
+	background-color: rgba(255, 255, 255, 0.1);
+	-webkit-backdrop-filter: saturate(1.8) blur(15px);
+	backdrop-filter: saturate(1.8) blur(15px);
+	*/
 	background-color: rgba(255, 255, 255, 0.1); /* alpha used to be .75, for reference */
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, .75);
 	font-family: 'Fira Code', 'Myriad Set Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -65,8 +68,8 @@ body {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	/*filter: saturate(1.8) blur(15px);
-	 * 	-webkit-filter: saturate(1.8) blur(15px);
-	 * 		-ms-filter: saturate(1.8) blur(15px);*/
+	-webkit-filter: saturate(1.8) blur(15px);
+	-ms-filter: saturate(1.8) blur(15px);*/
 }
 
 .bgimg {
@@ -88,28 +91,30 @@ body {
 }
 
 /* WORKAROUND FOR OTHER BROWSERS:
- *  * Look into using the same background, masked to be only behind the box,
- *   * located in the same place as the .body background, and then use
- *    * filter/-webkit-filter/etc. to apply a blur/saturation.
- *     * Modify BG color of box to be the same as the one in the safari box below.
- *      * */
+ * Look into using the same background, masked to be only behind the box,
+ * located in the same place as the .body background, and then use
+ * filter/-webkit-filter/etc. to apply a blur/saturation.
+ * Modify BG color of box to be the same as the one in the safari box below.
+ * */
 
 /* target safari for webkit backdrop blur */
-@media not all and (min-resolution:.001dpcm) { @media {
-	/*anything in here is safari only*/
-	.searchBox {
-		-webkit-backdrop-filter: saturate(1.8) blur(15px);
-		backdrop-filter: saturate(1.8) blur(15px);
-		background-color: rgba(255, 255, 255, 0.1) !important;
+@media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0) {
+	@media {
+		/*anything in here is safari only*/
+		.searchBox {
+			-webkit-backdrop-filter: saturate(1.8) blur(15px);
+			backdrop-filter: saturate(1.8) blur(15px);
+			background-color: rgba(255, 255, 255, 0.1) !important;
+		}
+		.searchBoxBG {
+			display: none !important;
+		}
+		html, body {
+			background-size: cover !important;
+			background-position: center !important;
+		}
 	}
-	.searchBoxBG {
-		display: none !important;
-	}
-	html, body {
-		background-size: cover !important;
-		background-position: center !important;
-	}
-}}
+}
 
 ::selection {
 	background-color: transparent;

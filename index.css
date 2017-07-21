@@ -23,6 +23,8 @@ body {
 	color: #d0d0d0;
 	border-bottom: 2px solid #808074;
 	background-color: #262626;
+	font-family: 'Fira Code', monospace;
+	font-size: 100%;
 }
 
 .searchbox:focus {

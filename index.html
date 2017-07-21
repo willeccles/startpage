@@ -2,11 +2,46 @@
 <html>
 	<head>
 		<title>Startpage</title>
+		<link rel='stylesheet' href='../font/fira_code.css'/>
 		<link rel='stylesheet' href='index.css'/>
 	</head>
 	<body>
 		<input type="text" id="search box" class="searchbox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="" onkeypress="return searchKeyPress(event)"></input>
-		
+		<span id="statusbar" class="statusbar">
+			<div id="mode" class="statusbox mode">I</div>
+			<div id="file" class="statusbox file">index.html</div>
+
+			<div id="time" class="statusbox time">
+				<script>
+					var interval;
+					function updateTime() {
+						interval = setInterval(writeTime, 1000);
+					}
+					function writeTime() {
+						var now = new Date();
+						function hours() {
+							if (now.getHours().toString().length < 2) {
+								return "0" + now.getHours();
+							} else {
+								return now.getHours();
+							}
+						}
+						function mins() {
+							if (now.getMinutes().toString().length < 2) {
+								return "0" + now.getMinutes();
+							} else {
+								return now.getMinutes();
+							}
+						}
+						document.getElementById("time").innerHTML = hours() + ":" + mins() + "&nbsp;";
+					}
+					
+					updateTime();
+					writeTime();
+				</script>
+			</div>
+		</span>
+
 		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>

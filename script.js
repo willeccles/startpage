@@ -290,7 +290,7 @@ function parseCom(com) {
 	else if (/^about:[A-Za-z0-9_-]+$/i.test(com)) {
 		document.location.href = com;
 	}
-	else if (/^(ttv\s)?(donny|mustard|bm)/.test(com)) {
+	else if (/^(ttv\s)?(donny|mustard|bm)$/.test(com)) {
 		nav("https://twitch.tv/barbaricmustard");
 	}
 	// These are some commands that are just for fun, and probably won't be added to the list

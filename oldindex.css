@@ -1,0 +1,75 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: 'Fira Code', monospace;
+}
+
+body {
+	background-color: #262626;
+}
+
+.searchbox {
+	position: absolute;
+	display: block;
+	width: 33%;
+	min-width: 550px;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+	border: none;
+	color: #d0d0d0;
+	border-bottom: 2px solid #808074;
+	background-color: #262626;
+	font-family: 'Fira Code', monospace;
+	font-size: 100%;
+}
+
+.searchbox:focus {
+	outline: none;
+}
+
+.statusbar {
+	display: block;
+	position: absolute;
+	height: 16px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	top: Calc(100% - 16px);
+	left: 0;
+	background-color: #4e4e4e;
+	font-size: 75%;
+	line-height: 16px;
+}
+
+.statusbox {
+	display: block;
+	position: absolute;
+	text-align: center;
+	height: 16px;
+	margin: 0;
+	padding: 0;
+}
+
+.mode {
+	background-color: white;
+	color: black;
+	width: 24px;
+}
+
+.file {
+	background-color: #ff875f;
+	width: 88px;
+	color: white;
+	left: 24px;
+}
+
+.time {
+	background-color: #5fafaf;
+	color: white;
+	right: 0;
+	width: 72px;
+}

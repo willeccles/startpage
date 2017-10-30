@@ -18,8 +18,18 @@ body {
 	border: 2px solid #808074;
 	font-family: 'Fira Code', monospace;
 	font-size: 100%;
-	color: #d0d0d0;
+	color: #cccccc;
 	padding: 4px;
+}
+
+.searchbox::-moz-selection {
+	color: #ffffff;
+	background: #f69a42;
+}
+
+.searchbox::selection {
+	color: #ffffff;
+	background: #f69a42;
 }
 
 .searchbox:focus {

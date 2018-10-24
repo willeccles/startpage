@@ -1,7 +1,7 @@
-var box = document.getElementById("search box");
+var box = document.getElementById("searchbox");
 
 // this should catch most URLs, or at least the ones I would type.
-var urlPattern = /^(https?:\/\/)?[^ ]+[.][^ ]+([.][^ ]+)*(\/[^ ]+)?$/i;
+var urlPattern = /^((https?|file):\/\/\/?)?[^ ]+[.][^ ]+([.][^ ]+)*(\/[^ ]+)?$/i;
 // regex for a hashtag taken straight from twitter's source code
 var hashtag = "(#|＃)?([a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0100-\u024f\u0253-\u0254\u0256-\u0257\u0300-\u036f\u1e00-\u1eff\u0400-\u04ff\u0500-\u0527\u2de0-\u2dff\ua640-\ua69f\u0591-\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05d0-\u05ea\u05f0-\u05f4\ufb12-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb40-\ufb41\ufb43-\ufb44\ufb46-\ufb4f\u0610-\u061a\u0620-\u065f\u066e-\u06d3\u06d5-\u06dc\u06de-\u06e8\u06ea-\u06ef\u06fa-\u06fc\u0750-\u077f\u08a2-\u08ac\u08e4-\u08fe\ufb50-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\u200c-\u200c\u0e01-\u0e3a\u0e40-\u0e4e\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\uffa1-\uffdc\u30a1-\u30fa\u30fc-\u30fe\uff66-\uff9f\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3099-\u309e\u3400-\u4dbf\u4e00-\u9fff\u20000-\u2a6df\u2a700-\u2b73f\u2b740-\u2b81f\u2f800-\u2fa1f]*[a-z_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0100-\u024f\u0253-\u0254\u0256-\u0257\u0300-\u036f\u1e00-\u1eff\u0400-\u04ff\u0500-\u0527\u2de0-\u2dff\ua640-\ua69f\u0591-\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05d0-\u05ea\u05f0-\u05f4\ufb12-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb40-\ufb41\ufb43-\ufb44\ufb46-\ufb4f\u0610-\u061a\u0620-\u065f\u066e-\u06d3\u06d5-\u06dc\u06de-\u06e8\u06ea-\u06ef\u06fa-\u06fc\u0750-\u077f\u08a2-\u08ac\u08e4-\u08fe\ufb50-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\u200c-\u200c\u0e01-\u0e3a\u0e40-\u0e4e\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\uffa1-\uffdc\u30a1-\u30fa\u30fc-\u30fe\uff66-\uff9f\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3099-\u309e\u3400-\u4dbf\u4e00-\u9fff\u20000-\u2a6df\u2a700-\u2b73f\u2b740-\u2b81f\u2f800-\u2fa1f][a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0100-\u024f\u0253-\u0254\u0256-\u0257\u0300-\u036f\u1e00-\u1eff\u0400-\u04ff\u0500-\u0527\u2de0-\u2dff\ua640-\ua69f\u0591-\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05d0-\u05ea\u05f0-\u05f4\ufb12-\ufb28\ufb2a-\ufb36\ufb38-\ufb3c\ufb40-\ufb41\ufb43-\ufb44\ufb46-\ufb4f\u0610-\u061a\u0620-\u065f\u066e-\u06d3\u06d5-\u06dc\u06de-\u06e8\u06ea-\u06ef\u06fa-\u06fc\u0750-\u077f\u08a2-\u08ac\u08e4-\u08fe\ufb50-\ufbb1\ufbd3-\ufd3d\ufd50-\ufd8f\ufd92-\ufdc7\ufdf0-\ufdfb\ufe70-\ufe74\ufe76-\ufefc\u200c-\u200c\u0e01-\u0e3a\u0e40-\u0e4e\u1100-\u11ff\u3130-\u3185\ua960-\ua97f\uac00-\ud7af\ud7b0-\ud7ff\uffa1-\uffdc\u30a1-\u30fa\u30fc-\u30fe\uff66-\uff9f\uff10-\uff19\uff21-\uff3a\uff41-\uff5a\u3041-\u3096\u3099-\u309e\u3400-\u4dbf\u4e00-\u9fff\u20000-\u2a6df\u2a700-\u2b73f\u2b740-\u2b81f\u2f800-\u2fa1f]*)";
 
@@ -30,12 +30,12 @@ function nav(address) {
 // Handle enter key press in text box
 // also handle the command parsing in the event that the text in the box is a command
 function searchKeyPress(e) {
+	if (window.commandsshown) return false;
+	
 	e = e || window.event;
 	if (e.keyCode == 13) {
 		parseCom(box.value);
 	}
-	
-	// first, handle known cases of preset commands
 }
 
 // when you hover a link, show its href
@@ -45,70 +45,30 @@ function aTitle(e) {
 
 // focus the search box on load
 window.onload = function() {
-	document.getElementById("search box").focus();
+	document.getElementById("searchbox").focus();
 };
+
+$(document).keypress(function (e) {
+	if (e.keyCode == 27 && window.commandsshown) {
+		window.commandsshown = false;
+		$("#help").removeClass("shown").addClass("hidden");
+		$("#searchbox").focus();
+		$("#searchbox").val("");
+	}
+});
 
 // parse the user's command
 function parseCom(com) {
 	// handle help command
 	if (/^h[ea]lp$/i.test(com) || /^commands$/i.test(com)) {
-		document.location.href = "commands.txt";
-	}
-	// handle imgur command
-	else if (/^imgur$/i.test(com)) {
-		document.location.href = "http://www.imgur.com";
-	}
-	// handle jordan's commands
-	else if (com.startsWith("jrd")==true) {
-		// if -t, go to his twitter
-		if (/^jrd -t$/i.test(com)) {
-			nav("https://www.twitter.com/aaeggs");
-		}
-		// if -r, go to his reddit
-		else if (/^jrd -r$/i.test(com)) {
-			nav("https://www.reddit.com/u/superspacezero");
-		}
-		// if just his name, default to his reddit
-		else if (/^jrd$/i.test(com)) {
-			nav("https://www.reddit.com/u/superspacezero");
-		}
-		// if anything else, it'll just google it because who cares
-		else if (urlPattern.test(com)){
-			nav(com);
-		}
-		// if all else fails, google it
-		else {
-			search();
-		}
+		//document.location.href = "commands.txt";
+		window.commandsshown = true;
+		$("#help").removeClass("hidden").addClass("shown");
 	}
 	// handle reddit command
 	else if (com.startsWith("reddit")==true) {
-		// if any of the custom subreddit commands are matched
-		if (/^reddit [A-Za-z]{2,2}$/i.test(com)) {
-			var subargs = com.split(" ");
-			switch (subargs.pop()) {
-				case "df":
-					nav("https://www.reddit.com/r/deliciousfails");
-					break;
-				case "wg":
-					nav("https://www.reddit.com/r/weekendgunnit");
-					break;
-				case "up":
-					nav("https://www.reddit.com/r/unixporn");
-					break;
-				case "sp":
-					nav("https://www.reddit.com/r/startpages");
-					break;
-				case "mk":
-					nav("https://www.reddit.com/r/mechanicalkeyboards");
-					break;
-				default:
-					nav("https://www.reddit.com/");
-					break;
-			}
-		}
 		// if the subreddit command is matched
-		else if (/^reddit -r [A-Za-z0-9][A-Za-z0-9_]{2,20}$/i.test(com)) {
+		if (/^reddit -r [A-Za-z0-9][A-Za-z0-9_]{2,20}$/i.test(com)) {
 			var sargs = com.split(" ");
 			nav("https://www.reddit.com/r/" + sargs.pop());
 		}
@@ -256,9 +216,6 @@ function parseCom(com) {
 	else if (/^speedtest$/i.test(com) || /^spd$/i.test(com)) {
 		nav("http://www.speedtest.net");
 	}
-	else if (/^ps$/i.test(com)) {
-		nav("http://tollandschool.powerschool.com/public");
-	}
 	// Media commands
 	else if (/^youtube$/i.test(com) || /^yt$/i.test(com)) {
 		nav("http://www.youtube.com");
@@ -267,7 +224,7 @@ function parseCom(com) {
 		nav("https://www.youtube.com/playlist?list=PLFO5u7DxWplMm2RfQ8FUMZs5ydmChx2V8");
 	}
 	else if (/^ttv$/i.test(com)) {
-		nav("http://www.twitch.tv/following");
+		nav("http://www.twitch.tv/following/live");
 	}
 	else if (/^ttv [a-zA-Z0-9_]{4,25}$/i.test(com)) {
 		var parts = com.split(" ");
@@ -294,7 +251,7 @@ function parseCom(com) {
 		nav("https://twitch.tv/barbaricmustard");
 	}
 	// These are some commands that are just for fun, and probably won't be added to the list
-	else if (/^cout << .*$/i.test(com)) {
+	else if (/^(std::)?cout << .*$/i.test(com)) {
 		var message = com.replace(/^cout << /i, "");
 		alert(message);
 	}

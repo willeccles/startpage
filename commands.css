@@ -1,0 +1,36 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	font-family: 'Fira Code', monospace;
+	background-color: #262626;
+}
+
+body {
+	background-color: #262626;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	color: #cccccc;
+}
+
+fieldset {
+	box-sizing: border-box;
+	background-color: #262626;
+	position: relative;
+	width: 100%;
+	max-width: 100%;
+	display: block;
+	border: 2px solid #808074;
+	font-family: 'Fira Code', monospace;
+	font-size: 100%;
+	color: #cccccc;
+	padding: 4px;
+	margin: 0;
+	margin-top: 5px;
+}
+
+legend {
+	color: #808074;
+}

@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Startpage</title>
-		<link rel='stylesheet' href='../font/fira_code.css'/>
-		<link rel='stylesheet' href='index.css'/>
+		<title>Home</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<link rel='stylesheet' href="index.css"/>
 	</head>
 	<body>
-		<input type="text" id="search box" class="searchbox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="" onkeypress="return searchKeyPress(event)"></input>
-		<span id="statusbar" class="statusbar">
-			<div id="mode" class="statusbox mode">I</div>
-			<div id="file" class="statusbox file">index.html</div>
-
-			<div id="time" class="statusbox time">
+		<div class="centerbox">
+			<div id="time" class="timecontainer">
 				<script>
 					var interval;
 					function updateTime() {
@@ -33,15 +29,45 @@
 								return now.getMinutes();
 							}
 						}
-						document.getElementById("time").innerHTML = hours() + ":" + mins() + "&nbsp;";
+						document.getElementById("time").innerHTML = hours() + ":" + mins();
 					}
-					
+
 					updateTime();
 					writeTime();
 				</script>
 			</div>
-		</span>
+			<div class="searchcontainer">
+				<p>&gt;</p>
+				<input type="text" id="searchbox" class="searchbox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="" onkeypress="return searchKeyPress(event)" autofocus/>
+			</div>
+			<fieldset class="twitchlinks">
+				<legend>Twitch</legend>
+				<table>
+					<tr class="ltwitch" data-tnick="BarbaricMustard">
+						<td><a class="twitchlink" href="https://twitch.tv/BarbaricMustard">BarbaricMustard</a></td>
+						<td><span class="status loading"></span></td>
+						<td><div class="statustext-container"><span class="statustext offline">Loading...</span></div></td>
+					</tr>
+					<tr class="ltwitch" data-tnick="Roseychuu">
+						<td><a class="twitchlink" href="https://twitch.tv/roseychuu">Roseychuu</a></td>
+						<td><span class="status loading"></span></td>
+						<td><div class="statustext-container"><span class="statustext offline">Loading...</span></div></td>
+					</tr>
+					<tr class="ltwitch" data-tnick="moemarrow">
+						<td><a class="twitchlink" href="https://twitch.tv/moemarrow">MoeMarrow</a></td>
+						<td><span class="status loading"></span></td>
+						<td><div class="statustext-container"><span class="statustext offline">Loading...</span></div></td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
 
+		<fieldset id="help" class="help hidden">
+			<legend>Commands</legend>
+			<iframe class="helpframe" src="commands.html"></iframe>
+		</fieldset>
+
+		<script src="streamstatus.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>

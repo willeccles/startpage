@@ -86,6 +86,10 @@ body {
 	background-color: #009933;
 }
 
+.status.failed {
+	background-color: #7c1313;
+}
+
 .status.offline {
 	background-color: #808074;
 }
@@ -106,6 +110,10 @@ body {
 	width: 100%;
 	display: block;
 	overflow: hidden;
+}
+
+.statustext.failed {
+	font-style: italic;
 }
 
 fieldset {

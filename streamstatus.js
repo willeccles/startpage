@@ -19,9 +19,32 @@ jQuery(document).ready(function ($) {
 		//var tid = channels[tnick].id;
 		var statusindicator = $(this).find(".status");
 		var statustext = $(this).find(".statustext");
-		$.getJSON("https://api.twitch.tv/kraken/streams/" + tnick + "?client_id=" + clientID + "&callback=?", function (c) {
-			//console.log(c);
-			if (c.stream == null) {
+		$.ajax({
+			url: "https://api.twitch.tv/kraken/streams/" + tnick + "?client_id=" + clientID,
+			dataType: 'json',
+			success: function (c) {
+				if(c.stream == null) {
+					statusindicator.removeClass("loading").addClass("offline");
+					statustext.html("Offline");
+				} else {
+					statusindicator.removeClass("loading").addClass("live");
+					statustext.removeClass("offline").addClass("online");
+					statustext.html(c.stream.game);
+					statustext.prop("title", c.stream.game);
+				}
+			},
+			error: function (c) {
+				statusindicator.removeClass("loading").addClass("failed");
+				statustext.removeClass("offline").addClass("failed");
+				statustext.html("Error.");
+			}
+		});
+		/*$.getJSON("https://api.twitch.tv/kraken/streams/" + tnick + "?client_id=" + clientID + "&callback=?", function (c) {
+			if (c == null) {
+				statusindicator.removeClass("loading").addClass("failed");
+				statustext.removeClass("offline").addClass("failed");
+				statustext.html("Error.");
+			} else if (c.stream == null) {
 				statusindicator.removeClass("loading").addClass("offline");
 				statustext.html("Offline");
 			} else {
@@ -30,6 +53,6 @@ jQuery(document).ready(function ($) {
 				statustext.html(c.stream.game);
 				statustext.prop("title", c.stream.game);
 			}
-		});
+		});*/
 	});
 });

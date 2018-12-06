@@ -48,7 +48,7 @@ window.onload = function() {
 	document.getElementById("searchbox").focus();
 };
 
-$(document).keypress(function (e) {
+$(document).keydown(function (e) {
 	if (e.keyCode == 27 && window.commandsshown) {
 		window.commandsshown = false;
 		$("#help").removeClass("shown").addClass("hidden");
@@ -58,6 +58,7 @@ $(document).keypress(function (e) {
 });
 
 // list of all commands and their actions
+// unused at the moment
 var commands = [
 	{
 		"name": "help",
@@ -220,6 +221,9 @@ var commands = [
 				var parts = com.split(" ");
 				nav("http://www.twitch.tv/" + parts.pop());
 			}
+			else if (/^(ttv\s)?(donny|mustard|bm)$/.test(com)) {
+				nav("https://twitch.tv/barbaricmustard");
+			}
 		}
 	},
 	{
@@ -241,7 +245,57 @@ var commands = [
 		}
 	},
 	{
-		"name": ":"
+		"name": "github",
+		"condition": com => {
+			return /^git(hub)?$/i.test(com);
+		},
+		"action": com => {
+			nav("https://github.com");
+		}
+	},
+	{
+		"name": "handy",
+		"condition": com => {
+			return handy.test(com);
+		},
+		"action": com => {
+			nav("http://www." + com + ".com/");
+		}
+	},
+	{
+		"name": "about stuff",
+		"condtion": com => {
+			return /^about:[A-Za-z0-9_-]+$/i.test(com);
+		},
+		"action": com => {
+
+		}
+	},
+	{
+		"name": "qu",
+		"condition": com => {
+			return (com.startsWith("qu") || com.startsWith("quinnipiac"));
+		},
+		"action": com => {
+			if (/^(qu|quinnipiac)$/i.test(com)) {
+				nav("www.qu.edu");
+			}
+			else if (/^(qu|quinnipiac) mail$/i.test(com)) {
+				nav("mail.quinnipiac.edu");
+			}
+			else if (/^(blackboard|bb)$/i.test(com)) {
+				nav("quinnipiac.blackboard.com");
+			}
+		}
+	},
+	{
+		"name": "myq",
+		"condition": com => {
+			return /^myq$/i.test(com);
+		},
+		"action": com => {
+			nav("myq.quinnipiac.edu");
+		}
 	}
 ];
 
@@ -462,6 +516,10 @@ function parseCom(com) {
 	}
 	else if (/^mimir$/i.test(com)) {
 		nav("https://class.mimir.io");
+	}
+	// bitwarden
+	else if (com.startsWith("bw")) {
+		nav("https://www.bitwarden.com")
 	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL

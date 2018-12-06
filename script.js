@@ -514,9 +514,6 @@ function parseCom(com) {
 	else if (/^(blackboard|bb)$/i.test(com)) {
 		nav("quinnipiac.blackboard.com");
 	}
-	else if (/^mimir$/i.test(com)) {
-		nav("https://class.mimir.io");
-	}
 	// bitwarden
 	else if (com.startsWith("bw")) {
 		nav("https://www.bitwarden.com")

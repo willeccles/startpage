@@ -277,7 +277,7 @@ function parseCom(com) {
 		nav("https://www.bitwarden.com");
 	}
 	// crunchyroll
-	else if (/^cr(unchyroll)?$/i) {
+	else if (/^cr(unchyroll)?$/i.test(com)) {
 		nav("https://www.crunchyroll.com");
 	}
 	// if it doesn't match any of the commands...

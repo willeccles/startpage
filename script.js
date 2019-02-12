@@ -48,7 +48,7 @@ window.onload = function() {
 	document.getElementById("searchbox").focus();
 };
 
-$(document).keypress(function (e) {
+$(document).keydown(function (e) {
 	if (e.keyCode == 27 && window.commandsshown) {
 		window.commandsshown = false;
 		$("#help").removeClass("shown").addClass("hidden");
@@ -272,8 +272,13 @@ function parseCom(com) {
 	else if (/^(blackboard|bb)$/i.test(com)) {
 		nav("quinnipiac.blackboard.com");
 	}
-	else if (/^mimir$/i.test(com)) {
-		nav("https://class.mimir.io");
+	// bitwarden
+	else if (com.startsWith("bw")) {
+		nav("https://www.bitwarden.com");
+	}
+	// crunchyroll
+	else if (/^cr(unchyroll)?$/i.test(com)) {
+		nav("https://www.crunchyroll.com");
 	}
 	// if it doesn't match any of the commands...
 	// ... but is a valid URL

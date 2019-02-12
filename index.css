@@ -149,22 +149,26 @@ legend {
 	color: #808074;
 }
 
-.twitchlink {
-	margin-right: 5px;
-	color: #808074;
-	text-decoration: none;
+.ltwitch > td:nth-child(2) {
 	transition:all 0.1s linear;
 	-webkit-transition:all 0.1s linear;
 	-moz-transition:all 0.1s linear;
 	-o-transition:all 0.1s linear;
 }
 
-.twitchlink:visited {
-	color: #808074;
+.ltwitch > td:nth-child(2):hover {
+	background-color: #8080743b;
 }
 
-.twitchlink:hover {
-	background-color: #8080743b;
+.twitchlink {
+	margin-right: 5px;
+	color: #808074;
+	text-decoration: none;
+	margin-left: 2px;
+}
+
+.twitchlink:visited {
+	color: #808074;
 }
 
 .helpbutton {

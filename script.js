@@ -14,7 +14,7 @@ var instaregex = /^i(nsta(gram)?|g)/i;
 function search() {
 	console.log("Googling \"" + box.value + "\"");
 	console.log("Encoded query: \n" + encodeURIComponent(box.value));
-	document.location.href = "https://www.bing.com/search?q=" + encodeURIComponent(box.value);
+	document.location.href = "https://www.duckduckgo.com/?q=" + encodeURIComponent(box.value);
 }
 
 // if not search, nav to somewhere
@@ -254,10 +254,6 @@ function parseCom(com) {
 	else if (/^(std::)?cout << .*$/i.test(com)) {
 		var message = com.replace(/^cout << /i, "");
 		alert(message);
-	}
-	// This one is for the bing thingy
-	else if (/^bing points farm$/.test(com)) {
-		nav("www.pogocheats.net/bing-rewards-bot");
 	}
 	// quinnipiac stuff
 	else if (/^(qu|quinnipiac)$/i.test(com)) {

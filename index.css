@@ -71,51 +71,6 @@ body {
 	outline: none;
 }
 
-.status {
-	display: inline-block;
-	height: 10px;
-	width: 10px;
-	border-radius: 5px;
-}
-
-.status.loading {
-	background-color: yellow;
-}
-
-.status.live {
-	background-color: #009933;
-}
-
-.status.failed {
-	background-color: #7c1313;
-}
-
-.status.offline {
-	background-color: #808074;
-}
-
-.statustext-container {
-	width: 100%;
-	table-layout: fixed;
-	display: table;
-}
-
-.statustext.offline {
-	font-style: italic;
-}
-
-.statustext.online {
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	width: 100%;
-	display: block;
-	overflow: hidden;
-}
-
-.statustext.failed {
-	font-style: italic;
-}
-
 fieldset {
 	box-sizing: border-box;
 	background-color: #262626;
@@ -131,43 +86,6 @@ fieldset {
 }
 
 legend {
-	color: #808074;
-}
-
-.twitchlinks {
-	width: 100%;
-	max-width: 100%;
-}
-.twitchlinks > table {
-	margin: 0;
-	padding: 0;
-	table-layout: fixed;
-	max-width: 100%;
-}
-
-.ltwitch {
-	color: #808074;
-}
-
-.ltwitch > td:nth-child(2) {
-	transition:all 0.1s linear;
-	-webkit-transition:all 0.1s linear;
-	-moz-transition:all 0.1s linear;
-	-o-transition:all 0.1s linear;
-}
-
-.ltwitch > td:nth-child(2):hover {
-	background-color: #8080743b;
-}
-
-.twitchlink {
-	margin-right: 5px;
-	color: #808074;
-	text-decoration: none;
-	margin-left: 2px;
-}
-
-.twitchlink:visited {
 	color: #808074;
 }
 

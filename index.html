@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>Home</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.206/distr/fira_code.min.css">
 		<link rel='stylesheet' href="index.css"/>
 	</head>
@@ -41,33 +40,6 @@
 				<p>&gt;</p>
 				<input type="text" id="searchbox" class="searchbox" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="" onkeypress="return searchKeyPress(event)" autofocus/>
 			</div>
-			<fieldset class="twitchlinks">
-				<legend>Twitch</legend>
-				<table>
-					<tr class="ltwitch" data-tnick="BarbaricMustard">
-						<td><span class="status loading"></span></td>
-						<td><a class="twitchlink" href="https://twitch.tv/BarbaricMustard">BarbaricMustard</a></td>
-						<td><div class="statustext-container"><span class="statustext offline">Loading...</span></div></td>
-					</tr>
-					<tr class="ltwitch" data-tnick="moemarrow">
-						<td><span class="status loading"></span></td>
-						<td><a class="twitchlink" href="https://twitch.tv/moemarrow">MoeMarrow</a></td>
-						<td>
-							<div class="statustext-container"><span class="statustext offline">Loading...</span></div>
-						</td>
-					</tr>
-					<tr class="ltwitch" data-tnick="Roseychuu">
-						<td><span class="status loading"></span></td>
-						<td><a class="twitchlink" href="https://twitch.tv/roseychuu">Roseychuu</a></td>
-						<td><div class="statustext-container"><span class="statustext offline">Loading...</span></div></td>
-					</tr>
-					<tr class="ltwitch" data-tnick="stoopidpuck">
-						<td><span class="status loading"></span></td>
-						<td><a class="twitchlink" href="https://twitch.tv/stoopidpuck">StoopidPuck</a></td>
-						<td><div class="statustext-container"><span class="statustext offline">Loading...</span></div></td>
-					</tr>
-				</table>
-			</fieldset>
 		</div>
 
 		<fieldset id="help" class="help hidden">
@@ -75,7 +47,6 @@
 			<iframe class="helpframe" src="commands.html"></iframe>
 		</fieldset>
 
-		<script src="streamstatus.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 	</body>
 </html>

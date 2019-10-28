@@ -13,7 +13,7 @@ var instaregex = /^i(nsta(gram)?|g)/i;
 
 // search for text in text box
 function search() {
-	console.log("Googling \"" + box.value + "\"");
+	console.log("Searching \"" + box.value + "\"");
 	console.log("Encoded query: \n" + encodeURIComponent(box.value));
 	document.location.href = "https://www.duckduckgo.com/?q=" + encodeURIComponent(box.value);
 }

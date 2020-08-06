@@ -32,7 +32,7 @@ function nav(address) {
 // also handle the command parsing in the event that the text in the box is a command
 function searchKeyPress(e) {
 	if (window.commandsshown) return false;
-	
+
 	e = e || window.event;
 	if (e.keyCode == 13) {
 		parseCom(box.value);
@@ -128,7 +128,7 @@ function parseCom(com) {
 		else if (/^twt -su @?[A-Za-z0-9_]{1,15} .{1,140}$/i.test(com)) {
 			var qparts = com.split(" ");
 			var query = com.replace(/^twt -su @?[A-Za-z0-9_]{1,15} /i, "");
-			
+
 			nav("https://www.twitter.com/search?q=" + encodeURIComponent(query + " from:" + qparts[2]));
 		}
 		// search twitter for tweets with a hashtag
@@ -238,9 +238,12 @@ function parseCom(com) {
 		nav("https://soundcloud.com/stream");
 	}
 	// github
-	else if (/^git(hub)?$/i.test(com)) {
+	else if (/^(git(hub)?|\$)$/i.test(com)) {
 		nav("https://github.com");
 	}
+    else if (m = com.match(/^(?:git(?:hub)?\s+|\$\s*)(\S+)\s*$/i)) {
+        nav(`https://github.com/${m[1]}`);
+    }
 	// Here are some really handy ones I'll probably have to use
 	else if (handy.test(com)) {
 		nav("http://www."+com+".com/");
@@ -255,19 +258,6 @@ function parseCom(com) {
 	else if (/^(std::)?cout << .*$/i.test(com)) {
 		var message = com.replace(/^cout << /i, "");
 		alert(message);
-	}
-	// quinnipiac stuff
-	else if (/^(qu|quinnipiac)$/i.test(com)) {
-		nav("www.qu.edu");
-	}
-	else if (/^myq$/i.test(com)) {
-		nav("myq.quinnipiac.edu");
-	}
-	else if (/^(qu|quinnipiac) mail$/i.test(com)) {
-		nav("mail.quinnipiac.edu");
-	}
-	else if (/^(blackboard|bb)$/i.test(com)) {
-		nav("quinnipiac.blackboard.com");
 	}
 	// bitwarden
 	else if (com.startsWith("bw")) {

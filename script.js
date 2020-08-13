@@ -91,23 +91,6 @@ function parseCom(com) {
 			search();
 		}
 	}
-	// voat
-	else if (com.startsWith("voat")==true) {
-		if (/^voat -v .*$/i.test(com)) {
-			var vargs = com.split(" ");
-			nav("https://voat.co/v/" + vargs.pop());
-		}
-		else if (/^voat -u .*$/i.test(com)) {
-			var uargs = com.split(" ");
-			nav("https://voat.co/u/" + uargs.pop());
-		}
-		else if (/^voat$/i.test(com)) {
-			nav("https://voat.co");
-		}
-		else {
-			search();
-		}
-	}
 	// handle twt command
 	else if (com.startsWith("twt")==true) {
 		// if matches the "twt" command
@@ -150,20 +133,6 @@ function parseCom(com) {
 			search();
 		}
 	}
-	// handle twd command
-	else if (com.startsWith("twd")==true) {
-		if (/^twd$/i.test(com)) {
-			nav("https://tweetdeck.twitter.com/");
-		}
-		// if anything else, it'll just google it because who cares
-		else if (urlPattern.test(com)){
-			nav(com);
-		}
-		// if all else fails, google it
-		else {
-			search();
-		}
-	}
 	// handle ig command
 	else if (instaregex.test(com)) {
 		// just plain old ig
@@ -174,29 +143,6 @@ function parseCom(com) {
 		else if (/^i(nsta(gram)?|g) @?[A-Za-z0-9_.]{1,30}/i.test(com)) {
 			var iargs = com.split(" ");
 			nav("https://www.instagram.com/" + iargs.pop());
-		}
-		// if anything else, it'll just google it because who cares
-		else if (urlPattern.test(com)){
-			nav(com);
-		}
-		// if all else fails, google it
-		else {
-			search();
-		}
-	}
-	// these are the BTC commands
-	else if (/^btc [A-Za-z]{2,2}$/i.test(com)) {
-		if (/^btc cb$/i.test(com)) {
-			nav("https://www.coinbase.com");
-		}
-		else if (/^btc ba$/i.test(com)) {
-			nav("https://www.bitcoinaliens.com/faucet");
-		}
-		else if (/^btc io$/i.test(com)) {
-			nav("http://bitkoin.io");
-		}
-		else if (/^btc ct$/i.test(com)) {
-			nav("https://www.changetip.com");
 		}
 		// if anything else, it'll just google it because who cares
 		else if (urlPattern.test(com)){

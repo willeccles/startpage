@@ -184,10 +184,10 @@ function parseCom(com) {
 		nav("https://soundcloud.com/stream");
 	}
 	// github
-	else if (/^(github|\$)$/i.test(com)) {
+	else if (/^\$$/i.test(com)) {
 		nav("https://github.com");
 	}
-	else if (m = com.match(/^(?:github\s+|\$\s*)(\S+)\s*$/i)) {
+	else if (m = com.match(/^\$\s*(\S+)\s*$/i)) {
 		nav(`https://github.com/${m[1]}`);
 	}
 	// Here are some really handy ones I'll probably have to use

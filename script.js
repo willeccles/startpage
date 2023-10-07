@@ -13,213 +13,217 @@ var instaregex = /^i(nsta(gram)?|g)/i;
 
 // search for text in text box
 function search() {
-	console.log("Googling \"" + box.value + "\"");
-	console.log("Encoded query: \n" + encodeURIComponent(box.value));
-	document.location.href = "https://www.duckduckgo.com/?q=" + encodeURIComponent(box.value);
+  console.log("Googling \"" + box.value + "\"");
+  console.log("Encoded query: \n" + encodeURIComponent(box.value));
+  if (/^!.*/.test(box.value)) {
+    document.location.href = "https://www.duckduckgo.com/?q=" + encodeURIComponent(box.value);
+  } else {
+    document.location.href = "https://www.bing.com/?q=" + encodeURIComponent(box.value);
+  }
 }
 
 // if not search, nav to somewhere
 function nav(address) {
-	// if the address starts with "https?|ftp ://"
-	if (/^(?:(?:https?|ftp):\/\/).*/i.test(address)) {
-		document.location.href = address;
-	} else {
-		document.location.href = "http://" + address;
-	}
+  // if the address starts with "https?|ftp ://"
+  if (/^(?:(?:https?|ftp):\/\/).*/i.test(address)) {
+    document.location.href = address;
+  } else {
+    document.location.href = "http://" + address;
+  }
 }
 
 // Handle enter key press in text box
 // also handle the command parsing in the event that the text in the box is a command
 function searchKeyPress(e) {
-	if (window.commandsshown) return false;
+  if (window.commandsshown) return false;
 
-	e = e || window.event;
-	if (e.keyCode == 13) {
-		parseCom(box.value);
-	}
+  e = e || window.event;
+  if (e.keyCode == 13) {
+    parseCom(box.value);
+  }
 }
 
 // when you hover a link, show its href
 function aTitle(e) {
-	e.title = e.href;
+  e.title = e.href;
 }
 
 // focus the search box on load
 window.onload = function() {
-	document.getElementById("searchbox").focus();
+  document.getElementById("searchbox").focus();
 };
 
 $(document).keydown(function (e) {
-	if (e.keyCode == 27 && window.commandsshown) {
-		window.commandsshown = false;
-		$("#help").removeClass("shown").addClass("hidden");
-		$("#searchbox").focus();
-		$("#searchbox").val("");
-	}
+  if (e.keyCode == 27 && window.commandsshown) {
+    window.commandsshown = false;
+    $("#help").removeClass("shown").addClass("hidden");
+    $("#searchbox").focus();
+    $("#searchbox").val("");
+  }
 });
 
 // parse the user's command
 function parseCom(com) {
-	// handle help command
-	if (/^h[ea]lp$/i.test(com) || /^commands$/i.test(com)) {
-		//document.location.href = "commands.txt";
-		window.commandsshown = true;
-		$("#help").removeClass("hidden").addClass("shown");
-	}
-	// handle reddit command
-	else if (com.startsWith("reddit")==true) {
-		// if the subreddit command is matched
-		if (/^reddit -r [A-Za-z0-9][A-Za-z0-9_]{2,20}$/i.test(com)) {
-			var sargs = com.split(" ");
-			nav("https://www.reddit.com/r/" + sargs.pop());
-		}
-		// if the user command is matched
-		else if (/^reddit -u [\w-]{3,20}$/i.test(com)) {
-			var uargs = com.split(" ");
-			nav("https://www.reddit.com/u/" + uargs.pop());
-		}
-		// if the plain old reddit command is matched
-		else if (/^reddit$/i.test(com)) {
-			nav("https://www.reddit.com/");
-		}
-		// if anything else, it'll just google it because who cares
-		else if (urlPattern.test(com)){
-			nav(com);
-		}
-		// if all else fails, google it
-		else {
-			search();
-		}
-	}
-	// handle twt command
-	else if (com.startsWith("twt")==true) {
-		// if matches the "twt" command
-		if (/^twt$/i.test(com)) {
-			nav("https://www.twitter.com/");
-		}
-		// if the twt [@]user_name command
-		else if (/^twt @?[A-Za-z0-9_]{1,15}$/i.test(com)) {
-			var targs = com.split(" ");
-			nav("https://www.twitter.com/" + targs.pop());
-		}
-		// search twitter for text
-		else if (/^twt -s .{1,140}$/i.test(com)) {
-			var query = com.replace(/^twt -s /i, "");
-			nav("https://www.twitter.com/search?q=" + encodeURIComponent(query));
-		}
-		// search twitter for text from user
-		else if (/^twt -su @?[A-Za-z0-9_]{1,15} .{1,140}$/i.test(com)) {
-			var qparts = com.split(" ");
-			var query = com.replace(/^twt -su @?[A-Za-z0-9_]{1,15} /i, "");
+  // handle help command
+  if (/^h[ea]lp$/i.test(com) || /^commands$/i.test(com)) {
+    //document.location.href = "commands.txt";
+    window.commandsshown = true;
+    $("#help").removeClass("hidden").addClass("shown");
+  }
+  // handle reddit command
+  else if (com.startsWith("reddit")==true) {
+    // if the subreddit command is matched
+    if (/^reddit -r [A-Za-z0-9][A-Za-z0-9_]{2,20}$/i.test(com)) {
+      var sargs = com.split(" ");
+      nav("https://www.reddit.com/r/" + sargs.pop());
+    }
+    // if the user command is matched
+    else if (/^reddit -u [\w-]{3,20}$/i.test(com)) {
+      var uargs = com.split(" ");
+      nav("https://www.reddit.com/u/" + uargs.pop());
+    }
+    // if the plain old reddit command is matched
+    else if (/^reddit$/i.test(com)) {
+      nav("https://www.reddit.com/");
+    }
+    // if anything else, it'll just google it because who cares
+    else if (urlPattern.test(com)){
+      nav(com);
+    }
+    // if all else fails, google it
+    else {
+      search();
+    }
+  }
+  // handle twt command
+  else if (com.startsWith("twt")==true) {
+    // if matches the "twt" command
+    if (/^twt$/i.test(com)) {
+      nav("https://www.twitter.com/");
+    }
+    // if the twt [@]user_name command
+    else if (/^twt @?[A-Za-z0-9_]{1,15}$/i.test(com)) {
+      var targs = com.split(" ");
+      nav("https://www.twitter.com/" + targs.pop());
+    }
+    // search twitter for text
+    else if (/^twt -s .{1,140}$/i.test(com)) {
+      var query = com.replace(/^twt -s /i, "");
+      nav("https://www.twitter.com/search?q=" + encodeURIComponent(query));
+    }
+    // search twitter for text from user
+    else if (/^twt -su @?[A-Za-z0-9_]{1,15} .{1,140}$/i.test(com)) {
+      var qparts = com.split(" ");
+      var query = com.replace(/^twt -su @?[A-Za-z0-9_]{1,15} /i, "");
 
-			nav("https://www.twitter.com/search?q=" + encodeURIComponent(query + " from:" + qparts[2]));
-		}
-		// search twitter for tweets with a hashtag
-		else if (/^twt -sh " + hashtag + "$/i.test(com)) {
-			var tag = com.replace(/^twt -sh #?/i, "");
-			nav("https://www.twitter.com/search?q=" + encodeURIComponent("#" + tag));
-		}
-		// search twitter for hashtags from user
-		else if (/^twt -sh @?[A-Za-z0-9_]{1,15} " + hashtag + "$/i.test(com)) {
-			var comparts = com.split(" ");
-			nav("https://www.twitter.com/search?q=" + encodeURIComponent(comparts[3] + " from:" + comparts[2]));
-		}
-		// if anything else, it'll just google it because who cares
-		else if (urlPattern.test(com)){
-			nav(com);
-		}
-		// if all else fails, google it
-		else {
-			search();
-		}
-	}
-	// handle ig command
-	else if (instaregex.test(com)) {
-		// just plain old ig
-		if (/^i(nsta(gram)?|g)$/i.test(com)) {
-			nav("https://www.instagram.com/");
-		}
-		// ig [@]username command
-		else if (/^i(nsta(gram)?|g) @?[A-Za-z0-9_.]{1,30}/i.test(com)) {
-			var iargs = com.split(" ");
-			nav("https://www.instagram.com/" + iargs.pop());
-		}
-		// if anything else, it'll just google it because who cares
-		else if (urlPattern.test(com)){
-			nav(com);
-		}
-		// if all else fails, google it
-		else {
-			search();
-		}
-	}
-	// misc commands
-	else if (/^inbox$/i.test(com)) {
-		nav("http://inbox.google.com");
-	}
-	else if (/^drive$/i.test(com)) {
-		nav("http://drive.google.com");
-	}
-	else if (/^speedtest$/i.test(com) || /^spd$/i.test(com)) {
-		nav("http://www.speedtest.net");
-	}
-	// Media commands
-	else if (/^youtube$/i.test(com) || /^yt$/i.test(com)) {
-		nav("http://www.youtube.com");
-	}
-	else if (/^yt m$/i.test(com) || /^(yt )?mrzic$/i.test(com)) {
-		nav("https://www.youtube.com/playlist?list=PLFO5u7DxWplMm2RfQ8FUMZs5ydmChx2V8");
-	}
-	else if (/^ttv$/i.test(com)) {
-		nav("http://www.twitch.tv/following/live");
-	}
-	else if (/^ttv [a-zA-Z0-9_]{4,25}$/i.test(com)) {
-		var parts = com.split(" ");
-		nav("http://www.twitch.tv/" + parts.pop());
-	}
-	else if (/^spotify$/i.test(com) || /^sptfy$/i.test(com)) {
-		nav("https://play.spotify.com");
-	}
-	else if (/^soundcloud$/i.test(com) || /^sc$/i.test(com)) {
-		nav("https://soundcloud.com/stream");
-	}
-	// github
-	else if (/^\$$/i.test(com)) {
-		nav("https://github.com");
-	}
-	else if (m = com.match(/^\$\s*(\S+)\s*$/i)) {
-		nav(`https://github.com/${m[1]}`);
-	}
-	// Here are some really handy ones I'll probably have to use
-	else if (handy.test(com)) {
-		nav("http://www."+com+".com/");
-	}
-	else if (/^about:[A-Za-z0-9_-]+$/i.test(com)) {
-		document.location.href = com;
-	}
-	else if (/^(ttv\s)?(donny|mustard|bm)$/.test(com)) {
-		nav("https://twitch.tv/barbaricmustard");
-	}
-	// These are some commands that are just for fun, and probably won't be added to the list
-	else if (/^(std::)?cout << .*$/i.test(com)) {
-		var message = com.replace(/^cout << /i, "");
-		alert(message);
-	}
-	// bitwarden
-	else if (com.startsWith("bw")) {
-		nav("https://www.bitwarden.com");
-	}
-	// crunchyroll
-	else if (/^cr(unchyroll)?$/i.test(com)) {
-		nav("https://www.crunchyroll.com");
-	}
-	// if it doesn't match any of the commands...
-	// ... but is a valid URL
-	else if (urlPattern.test(com)) {
-		nav(com);
-	}
-	// ... or should be searched
-	else {
-		search();
-	}
+      nav("https://www.twitter.com/search?q=" + encodeURIComponent(query + " from:" + qparts[2]));
+    }
+    // search twitter for tweets with a hashtag
+    else if (/^twt -sh " + hashtag + "$/i.test(com)) {
+      var tag = com.replace(/^twt -sh #?/i, "");
+      nav("https://www.twitter.com/search?q=" + encodeURIComponent("#" + tag));
+    }
+    // search twitter for hashtags from user
+    else if (/^twt -sh @?[A-Za-z0-9_]{1,15} " + hashtag + "$/i.test(com)) {
+      var comparts = com.split(" ");
+      nav("https://www.twitter.com/search?q=" + encodeURIComponent(comparts[3] + " from:" + comparts[2]));
+    }
+    // if anything else, it'll just google it because who cares
+    else if (urlPattern.test(com)){
+      nav(com);
+    }
+    // if all else fails, google it
+    else {
+      search();
+    }
+  }
+  // handle ig command
+  else if (instaregex.test(com)) {
+    // just plain old ig
+    if (/^i(nsta(gram)?|g)$/i.test(com)) {
+      nav("https://www.instagram.com/");
+    }
+    // ig [@]username command
+    else if (/^i(nsta(gram)?|g) @?[A-Za-z0-9_.]{1,30}/i.test(com)) {
+      var iargs = com.split(" ");
+      nav("https://www.instagram.com/" + iargs.pop());
+    }
+    // if anything else, it'll just google it because who cares
+    else if (urlPattern.test(com)){
+      nav(com);
+    }
+    // if all else fails, google it
+    else {
+      search();
+    }
+  }
+  // misc commands
+  else if (/^inbox$/i.test(com)) {
+    nav("http://inbox.google.com");
+  }
+  else if (/^drive$/i.test(com)) {
+    nav("http://drive.google.com");
+  }
+  else if (/^speedtest$/i.test(com) || /^spd$/i.test(com)) {
+    nav("http://www.speedtest.net");
+  }
+  // Media commands
+  else if (/^youtube$/i.test(com) || /^yt$/i.test(com)) {
+    nav("http://www.youtube.com");
+  }
+  else if (/^yt m$/i.test(com) || /^(yt )?mrzic$/i.test(com)) {
+    nav("https://www.youtube.com/playlist?list=PLFO5u7DxWplMm2RfQ8FUMZs5ydmChx2V8");
+  }
+  else if (/^ttv$/i.test(com)) {
+    nav("http://www.twitch.tv/following/live");
+  }
+  else if (/^ttv [a-zA-Z0-9_]{4,25}$/i.test(com)) {
+    var parts = com.split(" ");
+    nav("http://www.twitch.tv/" + parts.pop());
+  }
+  else if (/^spotify$/i.test(com) || /^sptfy$/i.test(com)) {
+    nav("https://play.spotify.com");
+  }
+  else if (/^soundcloud$/i.test(com) || /^sc$/i.test(com)) {
+    nav("https://soundcloud.com/stream");
+  }
+  // github
+  else if (/^\$$/i.test(com)) {
+    nav("https://github.com");
+  }
+  else if (m = com.match(/^\$\s*(\S+)\s*$/i)) {
+    nav(`https://github.com/${m[1]}`);
+  }
+  // Here are some really handy ones I'll probably have to use
+  else if (handy.test(com)) {
+    nav("http://www."+com+".com/");
+  }
+  else if (/^about:[A-Za-z0-9_-]+$/i.test(com)) {
+    document.location.href = com;
+  }
+  else if (/^(ttv\s)?(donny|mustard|bm)$/.test(com)) {
+    nav("https://twitch.tv/barbaricmustard");
+  }
+  // These are some commands that are just for fun, and probably won't be added to the list
+  else if (/^(std::)?cout << .*$/i.test(com)) {
+    var message = com.replace(/^cout << /i, "");
+    alert(message);
+  }
+  // bitwarden
+  else if (com.startsWith("bw")) {
+    nav("https://www.bitwarden.com");
+  }
+  // crunchyroll
+  else if (/^cr(unchyroll)?$/i.test(com)) {
+    nav("https://www.crunchyroll.com");
+  }
+  // if it doesn't match any of the commands...
+    // ... but is a valid URL
+  else if (urlPattern.test(com)) {
+    nav(com);
+  }
+  // ... or should be searched
+  else {
+    search();
+  }
 }
